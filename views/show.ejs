@@ -1,0 +1,58 @@
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="main w-full min-h-screen bg-zinc-900">
+
+        <a class="text-amber-200 inline-block p-10" href="/">Go Back</a>
+
+        <button class="edit-btn" onclick="openModal('<%=fileName%>', '<%=data%>')">✎</button>
+        <div class="tasks flex gap-3 flex-wrap p-10">
+            <div class="task min-w-72 px-3 py-4 rounded-md bg-zinc-800">
+                <h1 class="text-white text-3xl tracking-tighter">
+                    <%=fileName%>
+                </h1>
+            </div>
+            <div class="task w-full px-3 py-4 rounded-md bg-zinc-800">
+                <h1 class="text-white text-2xl tracking-tighter font-light">
+                    <%= data %>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Card</h2>
+            <form action="/edit/<%=fileName%>" method="post">
+                <label for="titleInput">Title</label>
+                <input type="text" id="titleInput" name="title" required>
+
+                <label for="descriptionInput">Description</label>
+                <textarea id="descriptionInput" name="description" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeModal()">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Message -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/javascripts/scripts.js"></script>
+
+
+</body>
+
+</html>
